@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from .models import Usuario
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -9,7 +9,7 @@ from . serializers import UsuarioSerializer
 
 
 class UsuarioViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = Usuario.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
@@ -20,7 +20,7 @@ class UsuarioAPI(APIView):
     def post(self, request):
         serializer = UsuarioSerializer(data=request.data)
         if serializer.is_valid():
-            user = serializer.save()
+            Usuario = serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
