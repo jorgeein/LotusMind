@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .models import Usuario
+from .models import Modulo
 
 class UsuarioAdmin(UserAdmin):
 
@@ -36,4 +37,6 @@ class UsuarioAdmin(UserAdmin):
         })
     )
 # Register your models here.
+
+admin.site.register(Modulo)
 admin.site.register(Usuario, UsuarioAdmin)
