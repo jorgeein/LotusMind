@@ -1,0 +1,212 @@
+body {
+    background-color: black;
+}
+
+.fondo-1 {
+    background-color: black;
+    width: 300px;
+    height: 80px;
+    margin-top: 25px;
+    margin-left: 630px;
+    font-family: Arial;
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+}
+
+.fondo-2 {
+    width: 500px;
+    height: 400px;
+    margin-left: 500px;
+    background-color: aliceblue;
+    border-radius: 50px;
+}
+
+
+
+
+.buscadorimg {
+    width: 40px;
+    margin-left: 20px;
+}
+
+.buscador-box {
+    background-color: darkgray;
+    border-radius: 25px;
+    margin-left: 10px;
+}
+
+.imagen-2 {
+    width: 200px;
+    margin-left: 160px;
+}
+
+.nombre-usuario {
+    color: black;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+.Log-out {
+    color: white;
+    background-color: rgb(12, 78, 200);
+    border: none;
+    border-radius: 90px;
+    width: 110px;
+    height: 25px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 130px;
+    margin-top: 50px;
+}
+
+.Log-out:hover {
+    opacity: 0.8;
+}
+
+.Log-out:active {
+    opacity: 0.5;
+}
+
+.delet-count {
+    color: white;
+    background-color: rgb(12, 78, 200);
+    border: none;
+    border-radius: 90px;
+    width: 110px;
+    height: 25px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.delet-count:hover {
+    opacity: 0.8;
+}
+
+.delet-count:active {
+    opacity: 0.5;
+}
+
+.fondo-3 {
+    background-color: aliceblue;
+    width: 600px;
+    height: 25px;
+    margin-left: 450px;
+    margin-top: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.texto-1 {
+    color: black;
+    font-family: Arial;
+    font-size: 50;
+}
+
+
+.progreso {
+    color: white;
+    background-color: rgb(12, 78, 200);
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    margin-left: 525px;
+    margin-bottom: 20px;
+}
+
+.progreso:hover {
+    opacity: 0.5;
+}
+
+.progreso:active {
+    opacity: 0.8;
+}
+
+.historial {
+    color: white;
+    background-color: rgb(12, 78, 200);
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+}
+
+.historial:hover {
+    opacity: 0.5;
+}
+
+.historial:active {
+    opacity: 0.8;
+}
+
+
+.mi-cuenta {
+    color: white;
+    background-color: rgb(12, 78, 200);
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    margin-left: 525px;
+    margin-right: 20px;
+}
+
+.mi-cuenta:hover {
+    opacity: 0.5;
+}
+
+.mi-cuenta:active {
+    opacity: 0.8;
+}
+
+.revision {
+    color: white;
+    background-color: rgb(12, 78, 200);
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+}
+
+.revision:hover {
+    opacity: 0.5;
+}
+
+.revision:active {
+    opacity: 0.8;
+}
