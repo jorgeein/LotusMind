@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registro</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      form {
+        margin: 0 auto;
+        width: 50%;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-top: 20px;
+      }
+
+      input[type="text"], input[type="password"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #333;
+        color: #fff;
+        width: 100%;
+        margin-top: 5px;
+      }
+
+      button[type="submit"] {
+        background-color: #fff;
+        color: #000;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #333;
+        color: #fff;
+      }
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+<body>
+    <h1>Registro</h1>
+    <form>
+      <label for="name">Nombre completo:</label>
+      <input type="text" id="name" name="name"><br>
+
+      <label for="email">Correo electrónico:</label>
+      <input type="text" id="email" name="email"><br>
+
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username"><br>
+
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" name="password"><br>
+
+      <label for="confirm-password">Confirmar contraseña:</label>
+      <input type="password" id="confirm-password" name="confirm-password"><br>
+
+      <button type="submit">Registrarse</button>
+    </form>
+    <p>Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+  </body>
+</html>
