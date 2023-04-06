@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LotusMind</title>
+    <link rel="stylesheet" href= "{% static '/frontend/css/index.css' %}">
+    <script src=".src/components/Js/button.js"></script>
+    <script src="https://kit.fontawesome.com/a722547376.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <input type="checkbox" id="check">
+    <nav>
+        <div class="icon">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></div>
+        <div class="search_box">
+            <input type="search" placeholder="Qué esta buscando">
+            <span class="fa fa-search"></span>
+        </div>
+        <ol>
+            <li><a href="#">Enojo</a></li>
+            <li><a href="#">Caminar</a></li>
+            <li><a href="#">Dormir</a></li>
+            <li><a href="#">Estres</a></li>
+            <li><a href="#">Relajación</a></li>
+        </ol>
+        <label for="check" class="bar">
+            <span class="fa fa-bars" id="bars"></span>
+            <span class="fa fa-times" id="times"></span>
+        </label>
+    </nav>
+
+    <div class="botones">
+        <div>
+        <button class="btn1" onclick="goToLink(this)" value="#">
+            <img src="{% static '/frontend/figuras/Meditacion.png' %}" width="400px" height="200px" alt="">
+        </button>
+
+        <button class="btn1" onclick="goToLink(this)" value="#">
+            <img src="{% static '/frontend/figuras/Dormir.png' %}" width="400px" height="200px" alt="">
+        </button>
+        </div>
+    </div>
+
+        <div class="botones2">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+            <img src= "{% static '/frontend/figuras/primerMeditacion.png' %}" alt="">
+        </button>
+        </div>  
+
+        <div class="botones3">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+            <img src=
+            "{% static '/frontend/figuras/redefine.png' %}" alt="">
+        </button>
+        </div>
+        
+        <div class="botones4">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+            <img src="{% static '/frontend/figuras/mmtsCom.png' %}" alt="">
+        </button>
+        </div>
+
+        <div class="botones5">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+            <img src="{% static '/frontend/figuras/SOS.png' %}" alt="">
+        </button>
+        </div>
+
+        <div class="botones6">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+            <img src="{% static '/frontend/figuras/Ejercicios.png' %}" alt="">
+        </button>
+        </div>
+
+        <div class="botones7">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+            <img src="{% static '/frontend/figuras/Progreso.png' %}" alt="">
+        </button>
+        </div>
+
+    <footer class="pie-de-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" alt="Logo LotusMind">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>ABOUT US</h2>
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, perferendis!</P>
+            </div>
+            <div class="box">
+                <h2>Siguenos en nuestras redes sociales:</h2>
+                <div class="red-social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+            <div class="box">
+                <h2>Otras opciones</h2>
+                <div><a href="#">Contactanos</a></div>
+                <div><a href="#">FAQ</a></div>
+                <div><a href="#">ETC</a></div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
