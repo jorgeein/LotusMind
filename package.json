@@ -1,0 +1,35 @@
+{
+  "name": "lotusmind",
+  "version": "1.0.0",
+  "description": "TALLER DE PROGRAMACION ORIENTABA A OBJETOS EQUIPO 4",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development ./LotusMind/frontend/src/index.js --output./LotusMind/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./LotusMind/frontend/src/index.js --output./LotusMind/frontend/static/frontend/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgeein/LotusMind.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgeein/LotusMind/issues"
+  },
+  "homepage": "https://github.com/jorgeein/LotusMind#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
