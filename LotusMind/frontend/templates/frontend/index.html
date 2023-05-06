@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
     {% load static %}
+    <link rel="stylesheet" href= "{% static '/frontend/css/index.css' %}">
+<link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-text-pro" rel="stylesheet">
+<style>
+@import url('https://fonts.cdnfonts.com   css/neue-haas-grotesk-text-pro');
+</style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,71 +19,103 @@
     <input type="checkbox" id="check">
     <nav>
         <div class="icon">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></div>
-        <div class="search_box">
-            <input type="search" placeholder="Qué esta buscando">
-            <span class="fa fa-search"></span>
-        </div>
-        <ol>
+      <div class="search-box">
+   		<button class="btn-search"><i class="fas fa-search"></i></button>
+    		<input type="text" class="input-search" placeholder="Type to Search...">
+  			</div>
+      <ul>
             <li><a href="#">Enojo</a></li>
             <li><a href="#">Caminar</a></li>
             <li><a href="#">Dormir</a></li>
             <li><a href="#">Estres</a></li>
             <li><a href="#">Relajación</a></li>
-        </ol>
+        </ul>
         <label for="check" class="bar">
             <span class="fa fa-bars" id="bars"></span>
             <span class="fa fa-times" id="times"></span>
         </label>
     </nav>
-
-    <div class="botones">
-        <div>
+	<div class = "etiquetas">
+		<ul class = "etiquetaslista">
+			<li>
+				<figure class = "etiqueta"><strong>Caminar</strong>&nbsp;</figure>
+			</li>
+			<li>
+				<figure class = "etiqueta"><strong>Enojo</strong>&nbsp;</figure>
+			</li>
+			<li>
+				<figure class = "etiqueta"><strong>Estrés</strong>&nbsp;</figure>
+			</li>
+			<li>
+				<figure class = "etiqueta"><strong>Relajación</strong>&nbsp;</figure>
+			</li>
+			<li>
+				<figure class = "etiqueta"><strong>Sueño</strong>&nbsp;</figure>
+			</li>
+		</ul>
+	</div>
+<div class="botones">
+    <div>
+		  <div class = "container"> 
         <button class="btn1" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/Meditacion.png' %}" width="400px" height="200px" alt="">
+            <img src="{% static '/frontend/figuras/Meditacion.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
         </button>
+		<div class="centered"><strong class="colornegro">Meditación</strong></div>
 
+		  </div>
+		  <div class = "container">
         <button class="btn1" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/Dormir.png' %}" width="400px" height="200px" alt="">
+            <img src="{% static '/frontend/figuras/Dormir.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
         </button>
+					<div class="centered"><strong class="colorblanco">Dormir</strong></div>
+
+		  </div>
+
         </div>
     </div>
+    <div class="modulos" id="buttones">
+      <div class="botones2">
+        <button class="btn2 primerameditacion" onclick="goToLink(this)" value="#">
+		<img src="{% static '/frontend/figuras/primera_meditacion.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
+		<figure class="bloquedemodulo" id = "primerameditacion">Tu primera meditación </figure>
 
-        <div class="botones2">
-        <button class="btn2" onclick="goToLink(this)" value="#">
-            <img src= "{% static '/frontend/figuras/primerMeditacion.png' %}" alt="">
-        </button>
-        </div>  
-
-        <div class="botones3">
-        <button class="btn2" onclick="goToLink(this)" value="#">
-            <img src=
-            "{% static '/frontend/figuras/redefine.png' %}" alt="">
-        </button>
+		</button>
         </div>
-        
-        <div class="botones4">
-        <button class="btn2" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/mmtsCom.png' %}" alt="">
-        </button>
+		<div class="botones4">
+  <button class="btn2" onclick="goToLink(this)" value="#"> 
+			<img src="{% static '/frontend/figuras/Redefine tu estres.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
+		<figure class="bloquedemodulo" id = "Redefinetuestres"> Redefine tu estrés y relájate </figure>
+		  </button>
         </div>
 
         <div class="botones5">
-        <button class="btn2" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/SOS.png' %}" alt="">
+        <button class="btn2" onclick="goToLink(this)" value="#"> 
+			<img src="{% static '/frontend/figuras/Momentos complicados.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
+		<figure class="bloquedemodulo" id = "Momentosdificles">Momentos Dificles </figure>
         </button>
         </div>
 
         <div class="botones6">
-        <button class="btn2" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/Ejercicios.png' %}" alt="">
-        </button>
-        </div>
+<button class="btn2" onclick="goToLink(this)" value="#">
+			<img src="{% static '/frontend/figuras/SOS.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
+		<figure class="bloquedemodulo" id="sos">SOS </figure>
+</button>
+      </div>
 
         <div class="botones7">
         <button class="btn2" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/Progreso.png' %}" alt="">
-        </button>
+			<img src="{% static '/frontend/figuras/Ejercicios y Tecnicas.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
+		<figure class="bloquedemodulo" id="Ejerciciosytecnicas">Ejercicios y tecnicas</figure></button>
         </div>
+		<div class="botones2">
+        <button class="btn2" onclick="goToLink(this)" value="#">
+		<img src="{% static '/frontend/figuras/Progreso.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
+		<figure class="bloquedemodulo" id = "Progreso">Progreso</figure>
+
+		</button>
+        </div>
+		
+</div>
 
     <footer class="pie-de-pagina">
         <div class="grupo-1">
@@ -90,8 +127,9 @@
                 </figure>
             </div>
             <div class="box">
-                <h2>ABOUT US</h2>
-                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, perferendis!</P>
+                <h2>Sobre nosotros</h2>
+                <p>Creamos una plataforma web para ayudar a personas con ansiedad. Brinda orientación y herramientas para controlar la ansiedad. Actualmente, estamos desarrollando un prototipo con características seleccionadas. Nuestro objetivo es hacer que la plataforma sea accesible en todo momento para los usuarios.
+                </p>
             </div>
             <div class="box">
                 <h2>Siguenos en nuestras redes sociales:</h2>
