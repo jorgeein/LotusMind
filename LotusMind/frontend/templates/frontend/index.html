@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LotusMind</title>
-    <link rel="stylesheet" href= "{% static '/frontend/css/index.css' %}">
+    <link rel="stylesheet" href="frontend/css/index.css">
     <script src=".src/components/Js/button.js"></script>
     <script src="https://kit.fontawesome.com/a722547376.js" crossorigin="anonymous"></script>
 </head>
@@ -57,58 +57,59 @@
 <div class="botones">
     <div>
 		  <div class = "container"> 
-        <button class="btn1" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/Meditacion.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
-        </button>
-		<div class="centered"><strong class="colornegro">Meditación</strong></div>
-
+            <a href="{% url 'mi_url' nombre_mod="Meditacion" %}">
+                <button class="btn1" onclick="goToLink(this)" value="#" type="button">
+                    <img src="{% static '/frontend/figuras/Meditacion.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
+                </button>
+		        <div class="centered"><strong class="colornegro">Meditación</strong></div>
+            </a>
 		  </div>
 		  <div class = "container">
-        <button class="btn1" onclick="goToLink(this)" value="#">
-            <img src="{% static '/frontend/figuras/Dormir.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
-        </button>
-					<div class="centered"><strong class="colorblanco">Dormir</strong></div>
-
+            <a href="{% url 'mi_url' nombre_mod="Dormir" %}">
+                <button class="btn1" onclick="goToLink(this)" value="#" type="button">
+                    <img src="{% static '/frontend/figuras/Dormir.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
+                </button>
+				<div class="centered"><strong class="colorblanco">Dormir</strong></div>
+            </a>
 		  </div>
-
         </div>
     </div>
     <div class="modulos" id="buttones">
       <div class="botones2">
-        <button class="btn2 primerameditacion" onclick="goToLink(this)" value="#">
+        <button class="btn2 primerameditacion" onclick="goToLink(this)" value="#" type="button">
 		<img src="{% static '/frontend/figuras/primera_meditacion.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "primerameditacion">Tu primera meditación </figure>
 
 		</button>
         </div>
 		<div class="botones4">
-  <button class="btn2" onclick="goToLink(this)" value="#"> 
+  <button class="btn2" onclick="goToLink(this)" value="#" type="button"> 
 			<img src="{% static '/frontend/figuras/Redefine tu estres.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "Redefinetuestres"> Redefine tu estrés y relájate </figure>
 		  </button>
         </div>
 
         <div class="botones5">
-        <button class="btn2" onclick="goToLink(this)" value="#"> 
+        <button class="btn2" onclick="goToLink(this)" value="#" type="button"> 
 			<img src="{% static '/frontend/figuras/Momentos complicados.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "Momentosdificles">Momentos Dificles </figure>
         </button>
         </div>
 
         <div class="botones6">
-<button class="btn2" onclick="goToLink(this)" value="#">
+<button class="btn2" onclick="goToLink(this)" value="#" type="button">
 			<img src="{% static '/frontend/figuras/SOS.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id="sos">SOS </figure>
 </button>
       </div>
 
         <div class="botones7">
-        <button class="btn2" onclick="goToLink(this)" value="#">
+        <button class="btn2" onclick="goToLink(this)" value="#" type="button">
 			<img src="{% static '/frontend/figuras/Ejercicios y Tecnicas.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id="Ejerciciosytecnicas">Ejercicios y tecnicas</figure></button>
         </div>
 		<div class="botones2">
-        <button class="btn2" onclick="goToLink(this)" value="#">
+        <button class="btn2" onclick="goToLink(this)" value="#" type="button">
 		<img src="{% static '/frontend/figuras/Progreso.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "Progreso">Progreso</figure>
 
