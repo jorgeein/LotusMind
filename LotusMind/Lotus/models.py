@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from .validators import validate_svg
 
 
 class Usuario(AbstractUser, PermissionsMixin):
@@ -40,6 +41,9 @@ class Recurso(models.Model):
     descripcion = models.TextField()
     modulos = models.ManyToManyField(Modulo, through='ModuloRecurso')
     cant_temas = models.IntegerField(blank=True, null=True)
+    imagen = models.FileField(
+        upload_to='frontend/static/frontend/figuras', validators=[validate_svg], null=True, blank=True)
+    tiempo_recurso = models.IntegerField(default=3)
 
     def __str__(self):
         return self.nombre_rec
