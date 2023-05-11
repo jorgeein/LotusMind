@@ -8,7 +8,7 @@
     <title>Agobio</title>
     <script src="./Js/button.js"></script>
     <script src="https://kit.fontawesome.com/a722547376.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href= "{% static '/frontend/css/modulo.css' %}">
+    <link rel="stylesheet" href= "{% static '/frontend/css/modulo.css' %}?{% now "U" %}">
 </head>
 <body>
 
@@ -34,11 +34,11 @@
 <div class="banner">
 	<div class = "contenedordeimagen">
 		<figure class="cuadro">&nbsp;</figure>
-		<a><img src="../../Documents/Dreamviewer/Atras.svg" alt="" class="imgatras"/> <img src="../../Documents/Dreamviewer/Agobio.svg" alt="" class="imagenrecurso"/></a>
+		<a><img src="../../Documents/Dreamviewer/Atras.svg" alt="" class="imgatras"/> <img src="{{primer_recurso.imagen.url}}" alt="" class="imagenrecurso"/></a>
 	</div>
     <div class="content">
-        <h1 class="Titulo">Agobio</h1>
-        <p class="textorec"><strong>Dale a tu mente espacio para respirar y aprendea no dejar que te consuma el agobio. </strong></p>
+        <h1 class="Titulo">{{primer_recurso.nombre_rec}}</h1>
+        <p class="textorec"><strong>{{primer_recurso.descripcion}}</strong></p>
         <a class="Comenzar" href="#" onclick="toggle()" > <strong> Comenzar </strong> </a>
     </div>
 </div>
@@ -46,8 +46,8 @@
   		<div class = "contenedorsiguiente">
 			<a><img src="../../Documents/Dreamviewer/Adelante.svg" alt="" class="simboloadelante"/></a>
 		  <figure class="cuadropequeno">&nbsp;</figure>
-		  <img src="../../Documents/Dreamviewer/Agobio.svg" alt="" class="imagensiguiente"/>
-			<div class ="textosiguiente"><strong>Siguiente: {Panico}</strong></div>
+		  <img src= "{{primer_recurso.imagen.url}}" alt="" class="imagensiguiente"/>
+			<div class ="textosiguiente"><strong>Siguiente:<br>{Panico}</strong></div>
 	  </div> 
 	</div>
 <footer class="pie-de-pagina">

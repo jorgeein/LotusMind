@@ -57,7 +57,7 @@
 <div class="botones">
     <div>
 		  <div class = "container"> 
-            <a href="{% url 'mi_url' nombre_mod="Meditacion" %}">
+            <a href="{% url 'recurso' nombre_mod="Meditacion" %}">
                 <button class="btn1" onclick="goToLink(this)" value="#" type="button">
                     <img src="{% static '/frontend/figuras/Meditacion.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
                 </button>
@@ -65,7 +65,7 @@
             </a>
 		  </div>
 		  <div class = "container">
-            <a href="{% url 'mi_url' nombre_mod="Dormir" %}">
+            <a href="{% url 'recurso' nombre_mod="Dormir" %}">
                 <button class="btn1" onclick="goToLink(this)" value="#" type="button">
                     <img src="{% static '/frontend/figuras/Dormir.svg' %}" alt="" width="400px" height="200px" class="principalimagen">
                 </button>

@@ -42,7 +42,7 @@ class Recurso(models.Model):
     modulos = models.ManyToManyField(Modulo, through='ModuloRecurso')
     cant_temas = models.IntegerField(blank=True, null=True)
     imagen = models.FileField(
-        upload_to='frontend/static/frontend/figuras', validators=[validate_svg], null=True, blank=True)
+        upload_to='LotusMind/frontend/static/frontend/figuras', validators=[validate_svg], null=True, blank=True)
     tiempo_recurso = models.IntegerField(default=3)
 
     def __str__(self):
@@ -52,6 +52,7 @@ class Recurso(models.Model):
 class ModuloRecurso(models.Model):
     modulo = models.ForeignKey(Modulo, on_delete=models.CASCADE)
     recurso = models.ForeignKey(Recurso, on_delete=models.CASCADE)
+    orden = models.IntegerField(default=1)
 
 
 class Etiqueta(models.Model):

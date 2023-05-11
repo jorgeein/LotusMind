@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Lotus.models import Modulo
+from Lotus.models import Modulo, Recurso, ModuloRecurso
 # Create your views here.
 
 
@@ -16,10 +16,51 @@ def index(request):
 
 
 def modulo(request, nombre_mod):
-    objetos = Modulo.objects.filter(nombre_mod=nombre_mod).all()
+    modulo = Modulo.objects.get(nombre_mod=nombre_mod)
+    recursos = Recurso.objects.filter(modulos=modulo).order_by(
+        'modulorecurso__orden')
+    primer_recurso = recursos.first()
+    recurso_anterior = None
+    recurso_siguiente = None
+
+    for i, r in enumerate(recursos):
+        if r == recurso and i > 0:
+            recurso_anterior = recursos[i-1]
+        elif r == recurso and i < len(recursos)-1:
+            recurso_siguiente = recursos[i+1]
+
+    context = {
+        'modulo': modulo,
+        'recursos': recursos,
+        'primer_recurso': primer_recurso,
+        'recurso_anterior': recurso_anterior,
+        'recurso_siguiente': recurso_siguiente
+    }
+    return render(request, 'frontend/plantillamodulo.html', context)
+
+
+def recurso(request, nombre_mod, nombre_rec):
+
+    modulo = Modulo.objects.get(nombre_mod=nombre_mod)
+    recurso = Recurso.objects.filter(
+        modulos=modulo, nombre_rec=nombre_rec).first()
+
+    # Obtener el recurso anterior y el siguiente
+    recursos = Recurso.objects.filter(
+        modulos=modulo).order_by('modulorecurso__orden')
+    recurso_anterior = None
+    recurso_siguiente = None
+
+    for i, r in enumerate(recursos):
+        if r == recurso and i > 0:
+            recurso_anterior = recursos[i-1]
+        elif r == recurso and i < len(recursos)-1:
+            recurso_siguiente = recursos[i+1]
 
     context = {
         'nombre_mod': nombre_mod,
-        'objetos': objetos
+        'recurso': recurso,
+        'recurso_anterior': recurso_anterior,
+        'recurso_siguiente': recurso_siguiente
     }
-    return render(request, 'frontend/plantillamodulo.html', context)
+    return render(request, 'frontend/plantillarecurso.html', context)

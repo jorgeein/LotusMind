@@ -11,6 +11,10 @@ from .models import Etiqueta
 User = get_user_model()
 
 
+class BarInline(admin.TabularInline):
+    model = Recurso.modulos.through
+
+
 class UsuarioForm(forms.ModelForm):
     modulos = forms.ModelMultipleChoiceField(
         queryset=Modulo.objects.all(),
@@ -21,6 +25,13 @@ class UsuarioForm(forms.ModelForm):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class ModuloAdmin(admin.ModelAdmin):
+    model = Modulo
+    inlines = [
+        BarInline,
+    ]
 
 
 class UsuarioAdmin(UserAdmin):
@@ -60,7 +71,7 @@ class UsuarioAdmin(UserAdmin):
 # Register your models here.
 
 
-admin.site.register(Modulo)
+admin.site.register(Modulo, ModuloAdmin)
 admin.site.register(Recurso)
 admin.site.register(ModuloRecurso)
 admin.site.register(Etiqueta)
