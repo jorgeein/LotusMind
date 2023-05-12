@@ -7,11 +7,8 @@ urlpatterns = [
     path('menu', views.menu),
     path('index', views.index),
     path('/<str:nombre_mod>/', views.modulo, name='recurso'),
-    path('<str:nombre_mod>/<str:nombre_rec>/', views.recurso, name='recurso'),
+    path('<str:nombre_mod>/<str:nombre_rec>/',
+         views.recurso, name='sigrecurso'),
 
 
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL,
-                          document_root=settings.STATIC_ROOT)

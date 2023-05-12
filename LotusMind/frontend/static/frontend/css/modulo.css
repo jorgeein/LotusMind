@@ -423,7 +423,6 @@ button.start {
 .cuadro {
     height: 300px;
     width: 400px;
-    background-color: #B4C7E7;
     border-radius: 70px;
     position: absolute;
     bottom: -11px;
@@ -449,7 +448,7 @@ button.start {
 }
 
 .Titulo {
-    margin-bottom: 70px;
+    margin-bottom: 20px;
     font-family: 'Neue Haas Grotesk Text', sans-serif;
 }
 
@@ -509,7 +508,7 @@ button.start {
 }
 
 .imagensiguiente {
-    margin-right: 40px;
+    margin-right: 35px;
 
 }
 
@@ -524,4 +523,9 @@ button.start {
     color: lightgray;
     position: relative;
     right: 30px;
+}
+
+.tipoyduracion {
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+
 }

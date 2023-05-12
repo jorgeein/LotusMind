@@ -45,9 +45,9 @@
 </div>
 	<div class = "barradesiguiente">
   		<div class = "contenedorsiguiente">
-            <a href="{% url 'sigrecurso' nombre_mod=modulo.nombre_mod nombre_rec=recurso_siguiente.nombre_rec %}" ><img src="{% static '/frontend/figuras/Adelante.svg' %}" alt="" class="simboloadelante"/></a>
-            <figure class="cuadropequeno"  style="background-color: {{ recurso_siguiente.color_hexadecimal }};">&nbsp;</figure>
-		  <img src= "{{'/LotusMind'|add:recurso_siguiente.imagen.url}}" alt="" class="imagensiguiente"/>
+			<a href="{% url 'sigrecurso' nombre_mod=nombre_mod nombre_rec=recurso_siguiente.nombre_rec %}" ><img src="{% static '/frontend/figuras/Adelante.svg' %}" alt="" class="simboloadelante"/></a>
+		  <figure class="cuadropequeno"  style="background-color: {{ recurso_siguiente.color_hexadecimal }};">&nbsp;</figure>
+		  <img src= "{{'/LotusMind'|add:recurso_siguiente.imagen.url }}" alt="" class="imagensiguiente"/>
 			<div class ="textosiguiente"><strong>Siguiente:<br> {{ recurso_siguiente.nombre_rec }}</strong></div>
 	  </div> 
 	</div>

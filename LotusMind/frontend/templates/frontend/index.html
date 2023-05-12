@@ -76,44 +76,59 @@
     </div>
     <div class="modulos" id="buttones">
       <div class="botones2">
+        <a href="{% url 'recurso' nombre_mod="Primera meditacion" %}">
         <button class="btn2 primerameditacion" onclick="goToLink(this)" value="#" type="button">
 		<img src="{% static '/frontend/figuras/primera_meditacion.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "primerameditacion">Tu primera meditación </figure>
 
 		</button>
         </div>
+        </a>
 		<div class="botones4">
-  <button class="btn2" onclick="goToLink(this)" value="#" type="button"> 
+        <a href="{% url 'recurso' nombre_mod="Redefine tu estres" %}">
+
+            <button class="btn2" onclick="goToLink(this)" value="#" type="button"> 
 			<img src="{% static '/frontend/figuras/Redefine tu estres.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
-		<figure class="bloquedemodulo" id = "Redefinetuestres"> Redefine tu estrés y relájate </figure>
+		    <figure class="bloquedemodulo" id = "Redefinetuestres"> Redefine tu estrés y relájate </figure>
 		  </button>
+        </a>
         </div>
 
         <div class="botones5">
+        <a href="{% url 'recurso' nombre_mod="Redefine tu estres" %}">
         <button class="btn2" onclick="goToLink(this)" value="#" type="button"> 
 			<img src="{% static '/frontend/figuras/Momentos complicados.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "Momentosdificles">Momentos Dificles </figure>
         </button>
+        </a>
         </div>
 
         <div class="botones6">
-<button class="btn2" onclick="goToLink(this)" value="#" type="button">
+        <a href="{% url 'recurso' nombre_mod="SOS" %}">
+
+            <button class="btn2" onclick="goToLink(this)" value="#" type="button">
 			<img src="{% static '/frontend/figuras/SOS.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
-		<figure class="bloquedemodulo" id="sos">SOS </figure>
-</button>
+		    <figure class="bloquedemodulo" id="sos">SOS </figure>
+            </button>
+        </a>
       </div>
 
         <div class="botones7">
+        <a href="{% url 'recurso' nombre_mod="Ejericios y Tecnicas" %}">
         <button class="btn2" onclick="goToLink(this)" value="#" type="button">
 			<img src="{% static '/frontend/figuras/Ejercicios y Tecnicas.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id="Ejerciciosytecnicas">Ejercicios y tecnicas</figure></button>
         </div>
+        </a>
 		<div class="botones2">
+        <a href="{% url 'recurso' nombre_mod="Progreso" %}">
+
         <button class="btn2" onclick="goToLink(this)" value="#" type="button">
 		<img src="{% static '/frontend/figuras/Progreso.svg' %}" width="130" height="130" alt="" class="meditacionimg"/>
 		<figure class="bloquedemodulo" id = "Progreso">Progreso</figure>
 
 		</button>
+        </a>
         </div>
 		
 </div>

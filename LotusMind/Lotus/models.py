@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from .validators import validate_svg
+import os
+from django.conf import settings
+
+
+def image_upload_path(instance, filename):
+    return os.path.join(settings.BASE_DIR, 'frontend', 'static', 'frontend', 'figuras', filename)
 
 
 class Usuario(AbstractUser, PermissionsMixin):
@@ -28,7 +34,7 @@ class Recurso(models.Model):
     LIBRO = 'Libro'
     ORIENTACIONEDUCATIVA = 'Orientacion Educativa'
     CURSO = 'Curso'
-    MEDITACION = 'MEDITACION'
+    MEDITACION = 'Meditación'
     TIPO_CHOICES = [
         (VIDEO, 'Video'),
         (MUSICA, 'Música'),
@@ -41,9 +47,11 @@ class Recurso(models.Model):
     descripcion = models.TextField()
     modulos = models.ManyToManyField(Modulo, through='ModuloRecurso')
     cant_temas = models.IntegerField(blank=True, null=True)
-    imagen = models.FileField(
-        upload_to='LotusMind/frontend/static/frontend/figuras', validators=[validate_svg], null=True, blank=True)
+    imagen = models.FileField(upload_to='frontend/static/frontend/figuras',
+                              validators=[validate_svg], null=True, blank=True)
     tiempo_recurso = models.IntegerField(default=3)
+    color_hexadecimal = models.CharField(
+        max_length=7, help_text='Color en formato hexadecimal (#RRGGBB)', default=" #FF0000")
 
     def __str__(self):
         return self.nombre_rec
