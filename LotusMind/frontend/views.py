@@ -21,8 +21,10 @@ def modulo(request, nombre_mod):
         'modulorecurso__orden')
     primer_recurso = recursos.first()
     recurso_anterior = None
-    recurso_siguiente = recursos[1]
-
+    if len(recursos) > 1:
+        recurso_siguiente = recursos[1]
+    else:
+        recurso_siguiente = None
     context = {
         'modulo': modulo,
         'recursos': recursos,
@@ -44,9 +46,14 @@ def recurso(request, nombre_mod, nombre_rec):
     # Obtener el recurso anterior y el siguiente
     recursos = Recurso.objects.filter(
         modulos=modulo).order_by('modulorecurso__orden')
-    recurso_anterior = recursos[orden-1]
+    if orden == 0:
+        recurso_anterior = None
+    else:
+        recurso_anterior = recursos[orden-1]
     if orden < len(recursos) - 1:
         recurso_siguiente = recursos[orden+1]
+    else:
+        recurso_siguiente = None
 
     context = {
         'nombre_mod': nombre_mod,

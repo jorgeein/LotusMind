@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('miusuario', views.paginausuario),
     path('menu', views.menu),
-    path('index', views.index),
+    path('index', views.index, name="index"),
     path('/<str:nombre_mod>/', views.modulo, name='recurso'),
     path('<str:nombre_mod>/<str:nombre_rec>/',
          views.recurso, name='sigrecurso'),

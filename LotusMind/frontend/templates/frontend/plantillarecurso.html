@@ -34,8 +34,13 @@
 <div class="banner">
 	<div class = "contenedordeimagen">
 		<figure class="cuadro" style="background-color: {{ recurso.color_hexadecimal }};">&nbsp;</figure>
-		<a><img src="{% static '/frontend/figuras/Atras.svg' %}" alt="" class="imgatras"/> <img src="{{'/LotusMind'|add:recurso.imagen.url }}" alt="" class="imagenrecurso"/></a>
-	</div>
+        {% if recurso_anterior %}
+		<a href="{% url 'sigrecurso' nombre_mod=nombre_mod nombre_rec=recurso_anterior.nombre_rec %}"><img src="{% static '/frontend/figuras/Atras.svg' %}" alt="" class="imgatras"/> 
+        {% else %}
+		<a href="{% url "index" %}"><img src="{% static '/frontend/figuras/Atras.svg' %}" alt="" class="imgatras"/> 
+        {% endif %}
+            <img src="{{'/LotusMind'|add:recurso.imagen.url }}" alt="" class="imagenrecurso"/></a>
+    </div>
     <div class="content">
         <h1 class="Titulo">{{recurso.nombre_rec}}</h1>
         <h2 class = "tipoyduracion">{{recurso.tipo}}·{{recurso.tiempo_recurso}} min</h2>
@@ -43,6 +48,7 @@
         <a class="Comenzar" href="#" onclick="toggle()" > <strong> Comenzar </strong> </a>
     </div>
 </div>
+{% if recurso_siguiente %}
 	<div class = "barradesiguiente">
   		<div class = "contenedorsiguiente">
 			<a href="{% url 'sigrecurso' nombre_mod=nombre_mod nombre_rec=recurso_siguiente.nombre_rec %}" ><img src="{% static '/frontend/figuras/Adelante.svg' %}" alt="" class="simboloadelante"/></a>
@@ -51,6 +57,7 @@
 			<div class ="textosiguiente"><strong>Siguiente:<br> {{ recurso_siguiente.nombre_rec }}</strong></div>
 	  </div> 
 	</div>
+{% endif %}
 <footer class="pie-de-pagina">
         <div class="grupo-1">
             <div class="box">
