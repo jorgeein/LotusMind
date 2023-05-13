@@ -18,13 +18,13 @@
 <body>
     <input type="checkbox" id="check">
     <nav>
-        <div class="icon">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></div>
+        <div class="icon"><a href ="{% url 'index'%}" style="text-decoration: none; color: white;">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></a></div>
       <div class="search-box">
    		<button class="btn-search"><i class="fas fa-search"></i></button>
     		<input type="text" class="input-search" placeholder="Type to Search...">
   			</div>
       <ul>
-            <li><a href="#">Enojo</a></li>
+            <li><a href="{% url 'miusuario'%}">Mi usuario</a></li>
             <li><a href="#">Caminar</a></li>
             <li><a href="#">Dormir</a></li>
             <li><a href="#">Estres</a></li>

@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+	{% load static %}
+
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a722547376.js" crossorigin="anonymous"></script>
     <title>LotusMind</title>
-    {% load static %}
-<link type="text/css" rel='stylesheet' href="{% static '/frontend/css/Perfil_Usuario_Lotusmind.css' %}">
+    <link href="{% static '/frontend/css/Perfil_Usuario_Lotusmind.css' %}?{% now "U" %}" rel="stylesheet" type="text/css">
 </head>
 <body>
     
-<div>
-<img class="buscadorimg" src="{% static '/frontend/figuras/buscador.png' %}">
-<input class="buscador-box" type="text" placeholder="Buscar">
-</div>
-
-
-<div class="fondo-1">
-<img class="logo" src="{% static '/frontend/figuras/logo-LotusMind.png' %}">LotusMind</div>
-
+	<input type="checkbox" id="check">
+    	<nav>
+        <div class="icon"><a href ="{% url 'index'%}" style="text-decoration: none;color: white;">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></a></div>
+      	<div class="search-box">
+   			<button class="btn-search"><i class="fas fa-search"></i></button>
+    			<input type="text" class="input-search" placeholder="Type to Search...">
+  			</div>
+      <ul>
+            <li><a href="#">Enojo</a></li>
+            <li><a href="#">Caminar</a></li>
+            <li><a href="#">Dormir</a></li>
+            <li><a href="#">Estres</a></li>
+            <li><a href="#">Relajación</a></li>
+        </ul>
+        <label for="check" class="bar">
+            <span class="fa fa-bars" id="bars"></span>
+            <span class="fa fa-times" id="times"></span>
+        </label>
+    </nav>
 
 <div class="fondo-2">
-    <img class="imagen-2" src="{% static '/frontend/figuras/imagen-2.png' %}">
+	<div class = "contenedor">
+		<span class="circle"></span>
+	    <img class = "imagen-2" src= "{% static '/frontend/figuras/usuario.svg' %}" alt=""/>
+	</div>
     <p class="nombre-usuario">Andrea Chavarria Hernandez</p> 
     <button class="Log-out">Cerrar Sesión</button> <button class="delet-count">Borrar Cuenta</button>
 </div>
-
-
-
-<div class="fondo-3">
-    <p class="texto-1">¡Comenzemos a controlar tus niveles ansiedad y estres registrandolos diariamente!</p>
-</div>
-
-<div><button class="progreso">Mi Progreso</button> <button class="historial">Historial</button></div>
-
-<div>
-<button class="mi-cuenta">Mi Cuenta</button>
-<button class="revision">Empezar Revisión</button>
-</div>
+	<div class = "botonesdecuenta">
+		<div id ="columna1">
+			<div class = "botones">
+				<button class="mi-cuenta">Mi progreso</button>
+				<button class="mi-cuenta">Historial</button>
+				<button class="mi-cuenta">Mi cuenta</button>
+			</div>
+		</div>
+		<div id ="columna2">
+			<div class = "botonesrevision">
+				<div class="textorevision"><strong>Comenzemos a controlar tus niveles ansiedad y estres registrandolos diariamente </strong></div>
+				<button class="Empezar revision">Empezar Revisión</button>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

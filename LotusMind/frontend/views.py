@@ -62,3 +62,7 @@ def recurso(request, nombre_mod, nombre_rec):
         'recurso_siguiente': recurso_siguiente
     }
     return render(request, 'frontend/plantillarecurso.html', context)
+
+
+def register(request):
+    return render(request, 'frontend/register.html')
