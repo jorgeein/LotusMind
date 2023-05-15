@@ -14,6 +14,23 @@ def menu(request):
 def index(request):
     return render(request, 'frontend/index.html')
 
+def conocer(request):
+    return render(request, 'frontend/conocerte.html')
+
+def login(request):
+    return render(request, 'frontend/login.html')
+
+
+def escala(request):
+    return render(request, 'frontend/Escala.html')
+
+
+def register(request):
+    return render(request, 'frontend/register.html')   
+
+def auth(request):
+    return render(request, 'frontend/authentification.html')  
+
 
 def modulo(request, nombre_mod):
     modulo = Modulo.objects.get(nombre_mod=nombre_mod)

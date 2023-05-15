@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+	{%load static%}
+	<meta name="google-signin-client_id" content="214924828827-m649nbuotr8luq1lm15m5hncjoelu166.apps.googleusercontent.com">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href= "{% static '/frontend/css/auth.css' %}">
+	<title>auth</title>
+	<head>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script>
+		  gapi.load('auth2', function() {
+			gapi.auth2.init({
+			  client_id: 'Y214924828827-m649nbuotr8luq1lm15m5hncjoelu166.apps.googleusercontent.com',
+			  redirect_uri: 'https://www.lotusmind.com/authentification'
+			});
+		  });
+			document.getElementById('register-with-google-button').addEventListener('click', function() {
+  			gapi.auth2.getAuthInstance().signIn();
+			});
+
+		</script>
+	  </head>
+	  
+<head>
+	<title>auth</title>
+	<style>
+		
+	</style>
+</head>
+<body>
+	<h1>Hola</h1>
+	<h2>Para iniciar, primero tendrás que registrarte.</h2>
+	<div class="center">
+		<div class="button-list">
+			<button class="button">Registrarse</button>
+			<button id="register-with-google-button">
+				<img src="https://developers.google.com/identity/images/btn_google_signin_light_normal_web.png">
+				Register with Google
+			  </button>
+			<h2>¿Ya tienes sesion? <a href="login.html"> Inicia sesión </a> </h2>
+		</div>
+	</div>
+</body>
+</html>

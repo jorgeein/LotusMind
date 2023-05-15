@@ -1,0 +1,47 @@
+body{
+  background-color: black;	
+  font-family: Arial, Helvetica, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+h1, h2{
+  color: aliceblue;
+  font-size: larger;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.button-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  width: 350px;			
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  padding-top: 20px;
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.5s;
+  margin-top: 5%;
+  display: block;
+  position: relative;	
+
+
+
+
+}
