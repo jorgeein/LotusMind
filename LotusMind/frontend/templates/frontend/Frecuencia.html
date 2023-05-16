@@ -6,28 +6,53 @@
   {% load static %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static '/frontend/css/preguntas.css' %}?{% now "U" %}">
-  <script src= "{% static 'frontend/encuesta.js'%}"></script>
+  <script src="{% static 'frontend/encuesta.js' %}"></script>
 
   <title>Frecuencia</title>
-  
 </head>
 <body>
-  <h1> {{pregunta.texto}}</h1>
-  <div class="container">
-    <div class="vertical center">
-    <button class="button" name="respuesta" value="5" onclick ="seleccionarOpcion(this)">Siempre o casi siempre</button>
-<br><br>
-  <button class="button" name="respuesta" value="4" onclick ="seleccionarOpcion(this)">Casi siempre</button>
-<br><br>
-<button class="button" name="respuesta" value="3" onclick ="seleccionarOpcion(this)">Con Frecuencia</button>
-<br><br>
-  <button class="button" name="respuesta" value="2" onclick ="seleccionarOpcion(this)">A veces</button>
-<br><br>
-<button class="button" name="respuesta" value="1" onclick ="seleccionarOpcion(this)">Nunca o casi Nunca</button>
-<br><br><br><br>
-  <button class="button2" >Siguiente</button>
-
-</div>
-</div>
+  <form method="POST" action="{% url 'encuesta' pregunta_id=pregunta.id %}">
+    {% csrf_token %}
+    <h1>{{ pregunta.texto }}</h1>
+    <div class="container">
+      <div class="vertical center">
+        <label for="respuesta_5" class="custom-radio">
+          <input type="radio" name="respuesta" value="5" id="respuesta_5" style="display: none;">
+          <div class="button">
+            Siempre o casi siempre
+          </div>
+        </label>
+        <br><br>
+        <label for="respuesta_4" class="custom-radio">
+          <input type="radio" name="respuesta" value="4" id="respuesta_4" style="display: none;">
+          <div class="button">
+            Casi siempre
+          </div>
+        </label>
+        <br><br>
+        <label for="respuesta_3" class="custom-radio">
+          <input type="radio" name="respuesta" value="3" id="respuesta_3" style="display: none;">
+          <div class="button">
+            Frecuentemente
+          </div>
+        </label>
+        <br><br>
+        <label for="respuesta_2" class="custom-radio">
+          <input type="radio" name="respuesta" value="2" id="respuesta_2" style="display: none;">
+          <div class="button">
+            A veces
+          </div>
+        </label>        <br><br>
+        <label for="respuesta_1" class="custom-radio">
+          <input type="radio" name="respuesta" value="1" id="respuesta_1" style="display: none;">
+          <div class="button">
+            Nunca o casi nunca
+          </div>
+        </label>
+        <br><br><br><br>
+        <button class="button2" type="submit">Siguiente</button>
+      </div>
+    </div>
+  </form>
 </body>
 </html>

@@ -10,6 +10,7 @@ h1 {
   padding-left: 50px;
   padding-right: 50px;
   font-size: 50px;
+  margin-top: 40px;
 }
 
 h2 {
@@ -22,18 +23,18 @@ h2 {
 
 .container {
   height: 400px;
-  align-content: center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-
+  margin-top: 200px;
 }
 
 .center {
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .button {
@@ -48,7 +49,7 @@ h2 {
   cursor: pointer;
   border-radius: 10px;
   transition: 0.5s;
-
+  margin-bottom: 20px;
 }
 
 .button2 {
@@ -74,10 +75,18 @@ h2 {
   color: rgb(255, 255, 255);
 }
 
-.selected {
+.custom-radio input:checked+.button {
   background-color: #8497B0;
   /* Establece el color de resaltado */
   font-weight: bold;
   /* Establece el estilo de fuente en negrita */
   color: black;
+}
+
+label {
+  position: relative;
+}
+
+input+div {
+  position: relative;
 }
