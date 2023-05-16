@@ -1,0 +1,81 @@
+body {
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+h1{
+  color: aliceblue;
+  font-family: Helvetica;
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 39px;
+  position: absolute;
+  display: block;
+  
+  }
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* set the height to fill the entire viewport */
+}
+
+ul {
+  list-style: none; /* remove the bullet points from the list */
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+
+
+button {
+font-family:Arial, Helvetica, sans-serif;
+font-weight: bold;
+border: 2px solid rgb(105, 96, 96);
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+padding-top: 20px;
+padding: 5px;
+width: 350px;
+font-size: 20px;
+cursor: pointer;
+border-radius: 10px;
+transition: 0.5s;
+margin-top: 5%;
+display: block;
+position: relative;
+}
+.sig{
+font-family:Arial, Helvetica, sans-serif;
+font-weight: bold;
+font-size: 24px;
+border: 2px solid rgb(105, 96, 96);
+background-color: rgb(57, 51, 75);
+color: rgb(255, 255, 255);
+padding: 5px 20px;
+width: 350px;
+font-size: 20px;
+cursor: pointer;
+border-radius: 10px;
+transition: 0.5s;
+margin-top: 15%;
+display: block;
+position: relative;
+
+}
+
+button:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  }
+
+.sig:hover{
+    background-color: rgb(29, 17, 59);
+    color: rgb(255, 255, 255);
+}
+
+

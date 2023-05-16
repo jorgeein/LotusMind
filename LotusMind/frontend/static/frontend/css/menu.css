@@ -1,3 +1,7 @@
+body{
+background-color: black;
+
+}
 .textoejemplo {
     text-transform: capitalize;
 }
