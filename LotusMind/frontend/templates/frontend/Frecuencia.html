@@ -3,24 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  {% load static %}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="preguntas.css">
+  <link rel="stylesheet" href="{% static '/frontend/css/preguntas.css' %}?{% now "U" %}">
+  <script src= "{% static 'frontend/encuesta.js'%}"></script>
+
   <title>Frecuencia</title>
   
 </head>
 <body>
-  <h1> ¿Durante el ultimo mes con qué frecuencia has estado afectado/a por algo que ha ocurrido inesperadamente?</h1>
+  <h1> {{pregunta.texto}}</h1>
   <div class="container">
-    <div class=" vertical center">
-  <button class="button">Casi siempre</button>
+    <div class="vertical center">
+    <button class="button" name="respuesta" value="5" onclick ="seleccionarOpcion(this)">Siempre o casi siempre</button>
 <br><br>
-  <button class="button">Frecuentemente</button>
+  <button class="button" name="respuesta" value="4" onclick ="seleccionarOpcion(this)">Casi siempre</button>
 <br><br>
-<button class="button">De vez en cuando</button>
+<button class="button" name="respuesta" value="3" onclick ="seleccionarOpcion(this)">Con Frecuencia</button>
 <br><br>
-  <button class="button">Casi nunca</button>
+  <button class="button" name="respuesta" value="2" onclick ="seleccionarOpcion(this)">A veces</button>
+<br><br>
+<button class="button" name="respuesta" value="1" onclick ="seleccionarOpcion(this)">Nunca o casi Nunca</button>
 <br><br><br><br>
-  <button class="button2">Siguiente</button>
+  <button class="button2" >Siguiente</button>
 
 </div>
 </div>

@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from .validators import validate_svg
@@ -67,3 +68,32 @@ class Etiqueta(models.Model):
     nombre = models.CharField(max_length=100)
     modulos = models.ManyToManyField(Modulo)
     recursos = models.ManyToManyField(Recurso)
+
+
+class Pregunta(models.Model):
+    texto = models.CharField(max_length=255)
+    respuesta = models.IntegerField()  # Campo de respuesta como IntegerField
+
+    def __str__(self):
+        return self.texto
+
+
+class RespuestaEncuesta(models.Model):
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    preguntas = models.ManyToManyField(
+        Pregunta, through='RespuestaPreguntaEncuesta')
+    fecha = models.DateField(auto_now_add=True)
+    total_respuestas = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.usuario.username} - Encuesta {self.id}'
+
+
+class RespuestaPreguntaEncuesta(models.Model):
+    respuesta_encuesta = models.ForeignKey(
+        RespuestaEncuesta, on_delete=models.CASCADE)
+    pregunta = models.ForeignKey(Pregunta, on_delete=models.CASCADE)
+    respuesta = models.IntegerField()  # Campo de respuesta como IntegerField
+
+    def __str__(self):
+        return f'{self.pregunta.texto} - {self.respuesta_encuesta}'

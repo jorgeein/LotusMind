@@ -6,7 +6,7 @@ from .models import Usuario
 from .models import Modulo
 from .models import Recurso
 from .models import ModuloRecurso
-from .models import Etiqueta
+from .models import Etiqueta, Pregunta, RespuestaEncuesta, RespuestaPreguntaEncuesta
 
 User = get_user_model()
 
@@ -76,3 +76,6 @@ admin.site.register(Recurso)
 admin.site.register(ModuloRecurso)
 admin.site.register(Etiqueta)
 admin.site.register(Usuario, UsuarioAdmin)
+admin.site.register(Pregunta)
+admin.site.register(RespuestaEncuesta)
+admin.site.register(RespuestaPreguntaEncuesta)

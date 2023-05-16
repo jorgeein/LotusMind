@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from Lotus.models import Modulo, Recurso, ModuloRecurso
+from django.shortcuts import redirect, render
+from Lotus.models import Modulo, Recurso, ModuloRecurso, Pregunta, RespuestaEncuesta, RespuestaPreguntaEncuesta
 # Create your views here.
 
 
@@ -66,3 +66,48 @@ def recurso(request, nombre_mod, nombre_rec):
 
 def register(request):
     return render(request, 'frontend/register.html')
+
+
+def encuesta(request):
+    preguntas = Pregunta.objects.all()
+    respuestas_usuario = RespuestaPreguntaEncuesta.objects.filter(
+        respuesta_encuesta__usuario=request.user
+    )
+    respuestas_usuario_ids = respuestas_usuario.values_list(
+        'pregunta__id', flat=True
+    )
+    preguntas_restantes = preguntas.exclude(id__in=respuestas_usuario_ids)
+    siguiente_pregunta = preguntas_restantes.first()
+
+    if request.method == 'POST':
+        pregunta_id = request.POST.get('pregunta_id')
+        respuesta = request.POST.get('respuesta')
+
+        if pregunta_id and respuesta:
+            pregunta = Pregunta.objects.get(id=pregunta_id)
+            respuesta_encuesta = RespuestaEncuesta.objects.get_or_create(
+                usuario=request.user
+            )[0]
+
+            RespuestaPreguntaEncuesta.objects.create(
+                respuesta_encuesta=respuesta_encuesta,
+                pregunta=pregunta,
+                respuesta=respuesta
+            )
+
+        # Redireccionar a la siguiente pregunta o mostrar resultados
+        if preguntas_restantes.exists():
+            siguiente_pregunta = preguntas_restantes.first()
+            return redirect('encuesta', pregunta_id=siguiente_pregunta.id)
+        else:
+            return redirect('resultado_encuesta')
+
+    if preguntas_restantes.exists():
+        siguiente_pregunta = preguntas_restantes.first()
+        context = {
+            'pregunta': siguiente_pregunta
+        }
+    else:
+        context = {}
+
+    return render(request, 'frontend/frecuencia.html', context)
