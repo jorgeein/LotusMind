@@ -82,7 +82,7 @@ class RespuestaEncuesta(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     preguntas = models.ManyToManyField(
         Pregunta, through='RespuestaPreguntaEncuesta')
-    fecha = models.DateField(auto_now_add=True)
+    fecha = models.DateTimeField(auto_now_add=True)
     total_respuestas = models.IntegerField(default=0)
     completada = models.BooleanField(default=False)
 

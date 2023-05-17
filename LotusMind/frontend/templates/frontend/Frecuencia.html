@@ -11,7 +11,8 @@
   <title>Frecuencia</title>
 </head>
 <body>
-  <form method="POST" action="{% url 'encuesta' pregunta_id=pregunta.id %}">
+  <form method="POST" action="{% url 'encuesta' pregunta_id=pregunta.id respuesta_encuesta_id=respuesta_encuesta.id %}">
+
     {% csrf_token %}
     <h1>{{ pregunta.texto }}</h1>
     <div class="container">

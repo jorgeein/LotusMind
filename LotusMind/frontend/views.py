@@ -1,3 +1,4 @@
+from django.db.models import Max
 from django.shortcuts import get_object_or_404, redirect, render
 from Lotus.models import Modulo, Recurso, ModuloRecurso, Pregunta, RespuestaEncuesta, RespuestaPreguntaEncuesta, Usuario
 # Create your views here.
@@ -19,10 +20,6 @@ def index(request):
 
 def conocer(request):
     return render(request, 'frontend/conocerte.html')
-
-
-def login(request):
-    return render(request, 'frontend/login.html')
 
 
 def escala(request):
@@ -90,30 +87,27 @@ def register(request):
     return render(request, 'frontend/register.html')
 
 
-def encuesta(request, pregunta_id=None):
+def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
     preguntas = Pregunta.objects.all()
     if not request.user.is_authenticated:
         user = Usuario.objects.get(username='Andreach')
         login(request, user)
 
     # Obtener la última respuesta del usuario, si existe
-    try:
-        respuesta_encuesta = RespuestaEncuesta.objects.filter(
-            usuario=request.user).latest('fecha')
-    except RespuestaEncuesta.DoesNotExist:
-        respuesta_encuesta = None
 
     # Si la respuesta del usuario es None o todas las preguntas ya han sido respondidas
-    if respuesta_encuesta is None or respuesta_encuesta.preguntas.count() == preguntas.count():
+    if respuesta_encuesta_id is None:
         # Crear una nueva respuesta de la encuesta
         respuesta_encuesta = RespuestaEncuesta.objects.create(
             usuario=request.user)
 
-    # Eliminar las respuestas existentes del usuario
+        # Eliminar las respuestas existentes del usuario
         RespuestaPreguntaEncuesta.objects.filter(
             respuesta_encuesta=respuesta_encuesta).delete()
-
-        # Obtener la siguiente pregunta que aún no ha sido respondida en la encuesta actual
+    else:
+        respuesta_encuesta = get_object_or_404(
+            RespuestaEncuesta, id=respuesta_encuesta_id)
+    # Obtener la siguiente pregunta que aún no ha sido respondida en la encuesta actual
     if pregunta_id is not None:
         pregunta_actual = get_object_or_404(preguntas, id=pregunta_id)
     else:
@@ -148,11 +142,13 @@ def encuesta(request, pregunta_id=None):
             return redirect('resultado_encuesta')
 
         # Redirigir a la siguiente pregunta de la encuesta actual
-        return redirect('encuesta', pregunta_id=pregunta_siguiente.id)
+        return redirect('encuesta', pregunta_id=pregunta_siguiente.id, respuesta_encuesta_id=respuesta_encuesta.id)
 
     context = {
-        'pregunta': pregunta_actual
+        'pregunta': pregunta_actual,
+        'respuesta_encuesta': respuesta_encuesta
     }
+    print("Contexto de la encuesta:", context)
     return render(request, 'frontend/frecuencia.html', context)
 
 
@@ -167,3 +163,19 @@ def resultado_encuesta(request):
         'total_respuestas': total_respuestas['total']
     }
     return render(request, 'frontend/resultado_encuesta.html', context)
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirige a la página de inicio después del login exitoso
+            return redirect('index')
+        else:
+            # Mostrar mensaje de error de login inválido
+            return render(request, 'login.html', {'error': 'Credenciales inválidas'})
+    else:
+        return render(request, 'frontend/login.html')

@@ -19,8 +19,8 @@
     <p class="text">¿No tienes cuenta?</p>
   </div>
   <div class="form">
-	<form action="#" method="post">
-    
+	<form action="{% url 'login' %}" method="post">
+		{% csrf_token %}
 		<input type="text" placeholder="Dirección de correo electrónico" id="username" name="username" required>
 
 		<input type="password" placeholder="Contraseña" id="password" name="password" required>
@@ -31,5 +31,8 @@
   </div>
 
 	</form>
+	{%if error%}
+		{{error}}
+	{%endif%}
 </body>
 </html>
