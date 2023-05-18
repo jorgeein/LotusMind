@@ -3,7 +3,10 @@ from django.shortcuts import get_object_or_404, redirect, render
 from Lotus.models import Modulo, Recurso, ModuloRecurso, Pregunta, RespuestaEncuesta, RespuestaPreguntaEncuesta, Usuario
 # Create your views here.
 from django.db.models import Sum
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout, authenticate, login
+from django.contrib import messages
+from .forms import RegistrationForm
+
 
 
 def paginausuario(request):
@@ -24,11 +27,6 @@ def conocer(request):
 
 def escala(request):
     return render(request, 'frontend/Escala.html')
-
-
-def register(request):
-    return render(request, 'frontend/register.html')
-
 
 def auth(request):
     return render(request, 'frontend/authentification.html')
@@ -84,7 +82,19 @@ def recurso(request, nombre_mod, nombre_rec):
 
 
 def register(request):
-    return render(request, 'frontend/register.html')
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, 'Registration successful.')
+            return redirect('index')
+    else:
+        form = RegistrationForm()
+    return render(request, 'frontend/register.html', {'form': form})
 
 
 def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
@@ -139,7 +149,9 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
         if pregunta_siguiente is None:
             respuesta_encuesta.completada = True
             respuesta_encuesta.save()
-            return redirect('resultado_encuesta')
+            print("Valor de respuesta_encuesta.id:", respuesta_encuesta.id)
+            return redirect('resultado_encuesta', respuesta_encuesta_id=respuesta_encuesta.id)
+
 
         # Redirigir a la siguiente pregunta de la encuesta actual
         return redirect('encuesta', pregunta_id=pregunta_siguiente.id, respuesta_encuesta_id=respuesta_encuesta.id)
@@ -152,15 +164,16 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
     return render(request, 'frontend/frecuencia.html', context)
 
 
-def resultado_encuesta(request):
-    respuestas_encuesta = RespuestaEncuesta.objects.filter(
-        usuario=request.user)
+def resultado_encuesta(request, respuesta_encuesta_id):
+    respuestas_encuesta = get_object_or_404(RespuestaEncuesta, id=respuesta_encuesta_id)
     total_respuestas = RespuestaPreguntaEncuesta.objects.filter(
-        respuesta_encuesta__in=respuestas_encuesta).aggregate(total=Sum('respuesta'))
-
+        respuesta_encuesta=respuestas_encuesta
+    ).aggregate(total=Sum('respuesta')).get('total')
+    respuestas_encuesta.total_respuestas = total_respuestas
+    respuestas_encuesta.save()
     context = {
         'respuestas_encuesta': respuestas_encuesta,
-        'total_respuestas': total_respuestas['total']
+        'total_respuestas': total_respuestas
     }
     return render(request, 'frontend/resultado_encuesta.html', context)
 
@@ -179,3 +192,7 @@ def login_view(request):
             return render(request, 'login.html', {'error': 'Credenciales inválidas'})
     else:
         return render(request, 'frontend/login.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
