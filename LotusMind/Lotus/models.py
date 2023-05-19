@@ -15,7 +15,8 @@ class Usuario(AbstractUser, PermissionsMixin):
     uso_terceros = models.BooleanField(default=False)
     escala_usuario = models.PositiveIntegerField(blank=True, null=True)
     historial_modulos = models.ManyToManyField('Modulo', blank=True)
-
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
     def tiene_modulo(self, modulo):
         return self.historial_modulos.filter(pk=modulo.pk).exists()
 

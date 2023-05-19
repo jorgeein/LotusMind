@@ -40,7 +40,7 @@
 		<span class="circle"></span>
 	    <img class = "imagen-2" src= "{% static '/frontend/figuras/usuario.svg' %}" alt=""/>
 	</div>
-    <p class="nombre-usuario">Andrea Chavarria Hernandez</p> 
+    <p class="nombre-usuario">{{ request.user.username }}</p> 
     <button class="Log-out">Cerrar Sesión</button> <button class="delet-count">Borrar Cuenta</button>
 </div>
 	<div class = "botonesdecuenta">
