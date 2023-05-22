@@ -1,7 +1,8 @@
 from rest_framework import routers
 from .api import UsuarioViewSet
 from Lotus.api import UsuarioAPI
-from django.urls import path
+from django.urls import path, include
+
 router = routers.DefaultRouter()
 router.register('api/Usuario', UsuarioViewSet, 'Usuario')
 

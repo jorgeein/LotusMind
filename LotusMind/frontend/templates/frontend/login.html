@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href= "{% static '/frontend/css/login.css' %}">
+    <link rel="stylesheet" href= "{% static '/frontend/css/login.css' %}?{% now "U" %}">
 
 <head>
 	<title>Login Form</title>
@@ -16,16 +16,20 @@
 <body>
   <h1>Iniciar Sesión</h1>
   <div class="circle">
-    <p class="text">¿No tienes cuenta?</p>
+    <p class="text">¿No tienes cuenta? <a href ="{% url 'inicio'%}" class ="ColorReg" >Registrate</a> </p>
   </div>
   <div class="form">
 	<form action="{% url 'login' %}" method="post">
 		{% csrf_token %}
+		{% load socialaccount %}
+
 		<input type="text" placeholder="Dirección de correo electrónico" id="username" name="username" required>
 
 		<input type="password" placeholder="Contraseña" id="password" name="password" required>
 
-		<input type="submit" value="Login">
+		<input  class ="submit"type="submit" value="Login">
+
+		<a href = "{% provider_login_url 'google' %}?next=/"><img src="{% static '/frontend/figuras/GooglepequeñoLogin.png' %}" alt="" width="67" height="52" class="google"/></a>
   </form>
 
   </div>

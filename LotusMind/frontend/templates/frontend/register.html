@@ -17,23 +17,24 @@
     <div class="circle"></div>
     <form method="post">
       {% csrf_token %}
-      {{ form.username.label_tag }}
+      <label for="id_username">Usuario:</label>
       {{ form.username }}
       {{ form.username.errors }}
-
-      {{ form.email.label_tag }}
+  
+      <label for="id_email">Correo electrónico:</label>
       {{ form.email }}
       {{ form.email.errors }}
-
-      {{ form.password1.label_tag }}
+  
+      <label for="id_password1">Contraseña:</label>
       {{ form.password1 }}
       {{ form.password1.errors }}
-
-      {{ form.password2.label_tag }}
+  
+      <label for="id_password2">Confirma tu contraseña:</label>
       {{ form.password2 }}
       {{ form.password2.errors }}
-      <button style ="botonsubmit" type="submit">Registrarse</button>
+      
+      <button type="submit">Registrarse</button>
     </form>
-    <h2>Ya tienes una cuenta? <a href="{% url 'login'%}">Inicia sesión</a></h2>
+    <h2>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a></h2>
   </body>
 </html>

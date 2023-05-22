@@ -8,6 +8,16 @@ from django.contrib import messages
 from .forms import RegistrationForm
 
 
+def inicio(request):
+    if request.user.is_authenticated:
+        return redirect('index')
+    return render(request, 'frontend/inicio.html')
+
+
+def google_auth(request):
+    # Redirecciona directamente a la autenticación de Google
+    return redirect('social:begin', backend='google-oauth2')
+
 
 def paginausuario(request):
     return render(request, 'frontend/Perfil_Usuario_Lotusmind.html')
@@ -27,6 +37,7 @@ def conocer(request):
 
 def escala(request):
     return render(request, 'frontend/Escala.html')
+
 
 def auth(request):
     return render(request, 'frontend/authentification.html')
@@ -99,9 +110,6 @@ def register(request):
 
 def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
     preguntas = Pregunta.objects.all()
-    if not request.user.is_authenticated:
-        user = Usuario.objects.get(username='Andreach')
-        login(request, user)
 
     # Obtener la última respuesta del usuario, si existe
 
@@ -152,7 +160,6 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
             print("Valor de respuesta_encuesta.id:", respuesta_encuesta.id)
             return redirect('resultado_encuesta', respuesta_encuesta_id=respuesta_encuesta.id)
 
-
         # Redirigir a la siguiente pregunta de la encuesta actual
         return redirect('encuesta', pregunta_id=pregunta_siguiente.id, respuesta_encuesta_id=respuesta_encuesta.id)
 
@@ -165,7 +172,8 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
 
 
 def resultado_encuesta(request, respuesta_encuesta_id):
-    respuestas_encuesta = get_object_or_404(RespuestaEncuesta, id=respuesta_encuesta_id)
+    respuestas_encuesta = get_object_or_404(
+        RespuestaEncuesta, id=respuesta_encuesta_id)
     total_respuestas = RespuestaPreguntaEncuesta.objects.filter(
         respuesta_encuesta=respuestas_encuesta
     ).aggregate(total=Sum('respuesta')).get('total')
@@ -192,6 +200,7 @@ def login_view(request):
             return render(request, 'login.html', {'error': 'Credenciales inválidas'})
     else:
         return render(request, 'frontend/login.html')
+
 
 def logout_view(request):
     logout(request)

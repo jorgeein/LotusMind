@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import social_core
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -30,6 +32,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+SITE_ID = 2
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +43,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Lotus',
-    'frontend'
+    'frontend',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'social_core',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email"
+        ],
+        "AUTH_PARAMS": {"access_type": "online"}
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -114,6 +134,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+SOCIALACCOUNT_LOGIN_ON_GET = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -124,5 +145,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '401337313975-uv03o8glbqjuu3v1anqdhv10ujl43ulq.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 AUTH_USER_MODEL = 'Lotus.Usuario'
+AUTHENTICATION_BACKENDS = {
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend"
+
+}
+SOCIAL_AUTH_GOOGLE_OAUTH2_AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/auth?response_type=token'
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"

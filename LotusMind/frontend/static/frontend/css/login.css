@@ -1,9 +1,10 @@
-h1{
+h1 {
   color: #f2f2f2;
-font-family:Arial, Helvetica, sans-serif;
-    
-  }
-  body {
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body {
   margin: 0;
   padding: 0;
   position: fixed;
@@ -12,66 +13,95 @@ font-family:Arial, Helvetica, sans-serif;
   right: 0;
   bottom: 0;
   background-color: #000000;
-  }
-  form {
+}
+
+form {
   background-color: #f2f2f2;
   border: 1px solid #ccc;
   padding: 50px;
   max-width: 400px;
   margin: 0 auto;
-      border-radius: 30px;
-      z-index: 1;
-      position: relative;
-  }
-  label {
+  border-radius: 30px;
+  z-index: 1;
+  position: relative;
+}
+
+label {
   display: block;
   margin-bottom: 10px;
-  }
-  input[type="text"], input[type="password"] {
+}
+
+input[type="text"],
+input[type="password"] {
   padding: 5px;
   width: 100%;
   border-radius: 8px;
   margin-bottom: 10px;
-     border: 2px solid black;
-    
+  border: 2px solid black;
+
+}
+
+input[type="submit"] {
+  background-color: #3b6cc7;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.circle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: expand 1s forwards;
+  text-align: center;
+  font-family: 'Neue Haas Grotesk Text', sans-serif;
+  font-size: 1px;
+}
+
+.text {
+  z-index: 2;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+  font-size: 80%;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 35%;
+  padding-right: 55%;
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0);
   }
-  input[type="submit"] {
-    background-color: #3b6cc7;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+
+  to {
+    transform: scale(20);
+    opacity: 40;
   }
-  input[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-       .circle {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 50%;
-    animation: expand 1s forwards;
-        z-index: 0;
-    }
-      .text {
-    font-family:Arial, Helvetica, sans-serif;
-    color: #1a1a1a;
-    font-size: 60%;
-    font-weight: bold;
-        text-align: center;
-        padding-top: 35%;
-        padding-right: 55%;
-    }
-  @keyframes expand {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(20);
-      opacity: 40;
-    }
-  }
+}
+
+.submit {
+  width: 103%;
+}
+
+.ColorReg {
+  color: #8497B0;
+  text-decoration: none;
+
+}
+
+.google {
+  margin-top: 5%;
+  width: 50px;
+  height: 50px;
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	{%load static%}
+<title>Inicio</title>
+<link rel="stylesheet" href= "{% static '/frontend/css/inicio.css' %}?{% now "U" %}">
+</head>
+
+<body>
+	{% load socialaccount %}
+<div class = "Hola"><img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" alt="" width="67" height="52" class="logo"/><strong>¡Hola! Nos alegra tenerte aquí.</strong></div>
+<div><strong>Para iniciar, primero tendrás que registrarte.</strong></div>
+<div class = "botones">
+  <div class = "contenedor">
+	<button class = "Registarse" onclick="location.href='{% url 'register' %}'" ><strong data_temp_dwid="0">Registarse</strong></button>
+	<a href = "{% provider_login_url 'google' %}?next=/"><img class = "google" src="{% static '/frontend/figuras/Googlelogin.png' %}" width="340" height="64" alt="google"/></a>
+	</div>
+</div>
+<div class ="login"><strong>¿Ya tienes sesion? <a href ="{% url 'login'%}"class="logincolor">Inicia Sesión</a></strong></div>
+</body>
+</html>

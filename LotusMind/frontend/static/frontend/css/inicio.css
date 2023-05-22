@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+body {
+    background-color: black;
+}
+
+div {
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 32px;
+    color: white;
+}
+
+.Hola {
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 80px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: white;
+}
+
+.contenedor {
+    margin-left: auto;
+    margin-right: auto;
+    width: 33%;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Registarse {
+    margin-top: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 70%;
+    height: 52px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 20px;
+    color: white;
+    border: 2px solid #E8E8E8;
+    border-color: white;
+    background-color: black;
+}
+
+.Registarse:hover {
+    cursor: pointer;
+}
+
+
+.google {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    width: 71%;
+}
+
+.login {
+    margin-top: 2%;
+    margin-right: 4%;
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 24px;
+    text-align: center;
+}
+
+.logincolor {
+    color: #8497B0;
+    text-decoration: none;
+}
+
+.logo {
+    position: absolute;
+    top: 4px;
+    right: 10px;
+    height: 150px;
+    width: 150px;
+    align-self: flex-end;
+}
