@@ -158,7 +158,7 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
             respuesta_encuesta.completada = True
             respuesta_encuesta.save()
             print("Valor de respuesta_encuesta.id:", respuesta_encuesta.id)
-            return redirect('resultado_encuesta', respuesta_encuesta_id=respuesta_encuesta.id)
+            return redirect('resultado_encuestaafter', respuesta_encuesta_id=respuesta_encuesta.id)
 
         # Redirigir a la siguiente pregunta de la encuesta actual
         return redirect('encuesta', pregunta_id=pregunta_siguiente.id, respuesta_encuesta_id=respuesta_encuesta.id)
@@ -171,7 +171,7 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
     return render(request, 'frontend/frecuencia.html', context)
 
 
-def resultado_encuesta(request, respuesta_encuesta_id):
+def resultado_encuestaafter(request, respuesta_encuesta_id):
     respuestas_encuesta = get_object_or_404(
         RespuestaEncuesta, id=respuesta_encuesta_id)
     total_respuestas = RespuestaPreguntaEncuesta.objects.filter(
@@ -179,9 +179,99 @@ def resultado_encuesta(request, respuesta_encuesta_id):
     ).aggregate(total=Sum('respuesta')).get('total')
     respuestas_encuesta.total_respuestas = total_respuestas
     respuestas_encuesta.save()
+    user = request.user
+    ultimas_encuestas = RespuestaEncuesta.objects.filter(
+        usuario=user).order_by('-fecha')[:5]
+    for encuesta in ultimas_encuestas:
+        encuesta.fecha = encuesta.fecha.strftime('%b %d')
+    margenizq = 0
+    porcentaje_circulo = 0
+    porcentaje_numero = 0
+    porcentaje_barra = 0
+    if total_respuestas <= 44:
+        porcentaje_barra = (((((total_respuestas-20)/25)*100)*30)/100)
+        margenizq = 0
+        porcentaje_circulo = porcentaje_barra + 0
+        porcentaje_numero = porcentaje_circulo - 4
+
+    if total_respuestas <= 59 and total_respuestas >= 45:
+        porcentaje_barra = (((((total_respuestas-44)/15)*100)*30)/100)
+        margenizq = 110
+        porcentaje_circulo = porcentaje_barra + 30
+        porcentaje_numero = porcentaje_circulo - 4
+
+    if total_respuestas <= 74 and total_respuestas >= 60:
+        porcentaje_barra = (((((total_respuestas-59)/15)*100)*30)/100)
+        margenizq = 220
+        porcentaje_circulo = porcentaje_barra + 70
+        porcentaje_numero = porcentaje_circulo - 4
+
+    if total_respuestas >= 75:
+        porcentaje_barra = (((((total_respuestas-74)/15)*100)*30)/100)
+        margenizq = 330
+        porcentaje_circulo = porcentaje_barra + 100
+        porcentaje_numero = porcentaje_circulo - 4
     context = {
         'respuestas_encuesta': respuestas_encuesta,
-        'total_respuestas': total_respuestas
+        'ultimas_encuestas': ultimas_encuestas,
+        'total_respuestas': total_respuestas,
+        'margen_izq': margenizq,
+        'porcentaje_barra': porcentaje_barra,
+        'porcentaje_circulo': porcentaje_circulo,
+        'porcentaje_numero': porcentaje_numero
+
+    }
+    return render(request, 'frontend/resultado_encuesta.html', context)
+
+
+def resultado_encuesta(request):
+    user = request.user
+    respuestas_encuesta = RespuestaEncuesta.objects.filter(
+        usuario=user).order_by('-fecha')[:1]
+    total_respuestas = RespuestaPreguntaEncuesta.objects.filter(
+        respuesta_encuesta=respuestas_encuesta
+    ).aggregate(total=Sum('respuesta')).get('total')
+    user = request.user
+    ultimas_encuestas = RespuestaEncuesta.objects.filter(
+        usuario=user).order_by('-fecha')[:5]
+    for encuesta in ultimas_encuestas:
+        encuesta.fecha = encuesta.fecha.strftime('%b %d')
+    margenizq = 0
+    porcentaje_circulo = 0
+    porcentaje_numero = 0
+    porcentaje_barra = 0
+    if total_respuestas <= 44:
+        porcentaje_barra = (((((total_respuestas-20)/25)*100)*30)/100)
+        margenizq = 0
+        porcentaje_circulo = porcentaje_barra + 0
+        porcentaje_numero = porcentaje_circulo - 4
+
+    if total_respuestas <= 59 and total_respuestas >= 45:
+        porcentaje_barra = (((((total_respuestas-44)/15)*100)*30)/100)
+        margenizq = 110
+        porcentaje_circulo = porcentaje_barra + 30
+        porcentaje_numero = porcentaje_circulo - 4
+
+    if total_respuestas <= 74 and total_respuestas >= 60:
+        porcentaje_barra = (((((total_respuestas-59)/15)*100)*30)/100)
+        margenizq = 220
+        porcentaje_circulo = porcentaje_barra + 70
+        porcentaje_numero = porcentaje_circulo - 4
+
+    if total_respuestas >= 75:
+        porcentaje_barra = (((((total_respuestas-74)/15)*100)*30)/100)
+        margenizq = 330
+        porcentaje_circulo = porcentaje_barra + 100
+        porcentaje_numero = porcentaje_circulo - 4
+    context = {
+        'respuestas_encuesta': respuestas_encuesta,
+        'ultimas_encuestas': ultimas_encuestas,
+        'total_respuestas': total_respuestas,
+        'margen_izq': margenizq,
+        'porcentaje_barra': porcentaje_barra,
+        'porcentaje_circulo': porcentaje_circulo,
+        'porcentaje_numero': porcentaje_numero
+
     }
     return render(request, 'frontend/resultado_encuesta.html', context)
 

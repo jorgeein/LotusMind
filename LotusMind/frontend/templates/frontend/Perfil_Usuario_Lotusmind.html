@@ -23,11 +23,11 @@
     			<input type="text" class="input-search" placeholder="Type to Search...">
   			</div>
       <ul>
-            <li><a href="{% url 'index' %}">Menu</a></li>
-            <li><a href="#">Mi progreso</a></li>
-            <li><a href="#">Ayuda</a></li>
-            <li><a href="#">Contactanos</a></li>
-            <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+		<li><a href="{% url 'index'%}">Menu</a></li>
+		<li><a href ="{% url 'resultado_encuesta'%}">Mi progreso</a></li>
+		<li><a href="#">Ayuda</a></li>
+		<li><a href="#">Contactanos</a></li>
+		<li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
         </ul>
         <label for="check" class="bar">
             <span class="fa fa-bars" id="bars"></span>
@@ -46,7 +46,7 @@
 	<div class = "botonesdecuenta">
 		<div id ="columna1">
 			<div class = "botones">
-				<button class="mi-cuenta">Mi progreso</button>
+				<button class="mi-cuenta" onclick="location.href='{% url 'resultado_encuesta' %}'">Mi progreso</button>
 				<button class="mi-cuenta">Historial</button>
 				<button class="mi-cuenta">Mi cuenta</button>
 			</div>

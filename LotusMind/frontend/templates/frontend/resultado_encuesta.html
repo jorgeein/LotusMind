@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+<link href="faedf.css" rel="stylesheet" type="text/css">
     {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agobio</title>
-    <script src="./Js/button.js"></script>
+    <title>Mi encuesta</title>
     <script src="https://kit.fontawesome.com/a722547376.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href= "{% static '/frontend/css/modulo.css' %}?{% now "U" %}">
+    <link rel="stylesheet" href="{% static '/frontend/css/miencuesta.css' %}">
 </head>
+
 <body>
 
     <input type="checkbox" id="check">
     <nav>
-        <div class="icon"><a href ="{% url 'index'%}" style="text-decoration: none; color: white;">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></a></div>
-      <div class="search-box">
-   		<button class="btn-search"><i class="fas fa-search"></i></button>
-    		<input type="text" class="input-search" placeholder="Type to Search...">
-  			</div>
-      <ul>
+        <div class="icon">LotusMind<img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" width="80px" alt=""></div>
+        <div class="search-box">
+            <button class="btn-search"><i class="fas fa-search"></i></button>
+            <input type="text" class="input-search" placeholder="Type to Search...">
+        </div>
+        <ul>
             <li><a href="{% url 'miusuario'%}">Mi usuario</a></li>
-            <li><a href="#">Mi progreso</a></li>
+            <li><a href ="{% url 'resultado_encuesta'%}">Mi progreso</a></li>
             <li><a href="#">Ayuda</a></li>
             <li><a href="#">Contactanos</a></li>
             <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
@@ -31,25 +33,62 @@
             <span class="fa fa-times" id="times"></span>
         </label>
     </nav>
-<div class="banner">
-	<div class = "contenedordeimagen">
-		<figure class="cuadro">&nbsp;</figure>
-		<a href="{% url "index" %}"><img src="{% static '/frontend/figuras/Atras.svg' %}" alt="" class="imgatras"/> 
-            <img src="" alt="" class="imagenrecurso"/></a>
-	</div>
-    <div class="content">
-        <h1 class="Titulo"></h1>
-        <h2 class = "tipoyduracion">· min</h2>
-        <p class="textorec"><strong></strong></p>
-        <a class="Comenzar" href="#" onclick="toggle()" > <strong> Comenzar </strong> </a>
-    </div>
+	            <h1 class="Tituloprincipal">Mi progreso</h1>
+
+    <div class="banner">
+        <div class="contenedordeimagen">
+            <figure class="cuadro">&nbsp;
+			<div class="chart-container">
+				<div class="y-axis">
+    <span></span>
+    <span><strong>Grave</strong></span>
+    <span><strong>Moderada</strong></span>
+    <span><strong>Leve</strong></span>
+    <span><strong>Normal</strong></span>
+    <span></span>
+  </div>
+			<div class="chart">
+				  <div class="bar" style="height: {{ultimas_encuestas.4.total_respuestas}}%;"><span class="bar-label">{{ultimas_encuestas.4.fecha}}</span></div>
+				  <div class="grid-line line1"></div>
+				  <div class="bar" style="height: {{ultimas_encuestas.3.total_respuestas}}%;"><span class="bar-label">{{ultimas_encuestas.3.fecha}}</span></div>
+				  <div class="grid-line line2"></div>
+				  <div class="bar" style="height: {{ultimas_encuestas.2.total_respuestas}}%;"><span class="bar-label">{{ultimas_encuestas.2.fecha}}</span></div>
+				  <div class="grid-line line3"></div>
+				  <div class="bar" style="height: {{ultimas_encuestas.1.total_respuestas}}%;"><span class="bar-label">{{ultimas_encuestas.1.fecha}}</span></div>
+				  <div class="grid-line line4"></div>
+				  <div class="bar" style="height: {{ultimas_encuestas.0.total_respuestas}}%;"><span class="bar-label">{{ultimas_encuestas.0.fecha}}</span></div>
+				  <div class="grid-line line5"></div>
+				  <div class="grid-line line6"></div>
+				  <div class="grid-line line7"></div>
+
+				</div>
+
+				</div>
+		  </figure>
 </div>
+        <div class="content">
+            <h1 class="Titulo">Resultados sobre la ansiedad.</h1>
+				<div class ="barra1"></div>
+				<div class ="barra2"></div>
+				<div class ="barra3"></div>
+				<div class ="barra4"></div>
+				<div class ="texto1">baja</div>
+				<div class ="texto2">leve</div>	
+				<div class ="texto3">moderada</div>
+				<div class ="texto4">grave</div>	
+			<span class="dot" style="margin-left:{{porcentaje_circulo}}%;"></span>
+				<div class = "numeroresultado" style="margin-left:{{porcentaje_numero}}%;"><strong>{{total_respuestas}}</strong></div>
+				<div class ="barraresultado" style="margin-left:{{margen_izq}}px; width:{{porcentaje_barra}}%;"></div>
+
+		
+		</div>
+    </div>
 <footer class="pie-de-pagina">
-        <div class="grupo-1">
+    <div class="grupo-1">
             <div class="box">
                 <figure>
                     <a href="#">
-                        <img src="{% static '/frontend/figuras/LOTUSLGO.svg' %}" alt="Logo LotusMind">
+                        <img src="./img/LOTUSLGO.svg" alt="Logo LotusMind">
                     </a>
                 </figure>
             </div>
@@ -76,4 +115,5 @@
     </footer>
 
 </body>
+
 </html>
