@@ -48,6 +48,9 @@ def modulo(request, nombre_mod):
     recursos = Recurso.objects.filter(modulos=modulo).order_by(
         'modulorecurso__orden')
     primer_recurso = recursos.first()
+    user = request.user  # Suponiendo que tienes un perfil de Usuario asociado
+    user.historial_recursos.add(primer_recurso)
+    user.save()
     recurso_anterior = None
     if len(recursos) > 1:
         recurso_siguiente = recursos[1]
@@ -64,7 +67,6 @@ def modulo(request, nombre_mod):
 
 
 def recurso(request, nombre_mod, nombre_rec):
-
     modulo = Modulo.objects.get(nombre_mod=nombre_mod)
     recurso = Recurso.objects.filter(
         modulos=modulo, nombre_rec=nombre_rec).first()
@@ -82,7 +84,9 @@ def recurso(request, nombre_mod, nombre_rec):
         recurso_siguiente = recursos[orden+1]
     else:
         recurso_siguiente = None
-
+    user = request.user  # Suponiendo que tienes un perfil de Usuario asociado
+    user.historial_recursos.add(recurso)
+    user.save()
     context = {
         'nombre_mod': nombre_mod,
         'recurso': recurso,
@@ -90,6 +94,26 @@ def recurso(request, nombre_mod, nombre_rec):
         'recurso_siguiente': recurso_siguiente
     }
     return render(request, 'frontend/plantillarecurso.html', context)
+
+
+def recursoindividual(request, nombre_rec):
+    recurso = Recurso.objects.filter(nombre_rec=nombre_rec).first()
+    user = request.user  # Suponiendo que tienes un perfil de Usuario asociado
+    user.historial_recursos.add(recurso)
+    user.save()
+    context = {
+        'recurso': recurso
+    }
+    return render(request, 'frontend/plantillarecursoindividual.html', context)
+
+
+def historial(request):
+    user = request.user  # Suponiendo que tienes un perfil de Usuario asociado al modelo User
+
+    context = {
+        'historial_recursos': user.historial_recursos.all()
+    }
+    return render(request, 'frontend/historial.html', context)
 
 
 def register(request):
@@ -174,6 +198,8 @@ def encuesta(request, pregunta_id=None, respuesta_encuesta_id=None):
 def resultado_encuestaafter(request, respuesta_encuesta_id):
     respuestas_encuesta = get_object_or_404(
         RespuestaEncuesta, id=respuesta_encuesta_id)
+    if respuesta_encuesta_id is None:
+        total_respuestas = 0
     total_respuestas = RespuestaPreguntaEncuesta.objects.filter(
         respuesta_encuesta=respuestas_encuesta
     ).aggregate(total=Sum('respuesta')).get('total')
@@ -187,7 +213,8 @@ def resultado_encuestaafter(request, respuesta_encuesta_id):
     margenizq = 0
     porcentaje_circulo = 0
     porcentaje_numero = 0
-    porcentaje_barra = 0
+    if total_respuestas is None:
+        total_respuestas = 20
     if total_respuestas <= 44:
         porcentaje_barra = (((((total_respuestas-20)/25)*100)*30)/100)
         margenizq = 0
@@ -219,7 +246,6 @@ def resultado_encuestaafter(request, respuesta_encuesta_id):
         'porcentaje_barra': porcentaje_barra,
         'porcentaje_circulo': porcentaje_circulo,
         'porcentaje_numero': porcentaje_numero
-
     }
     return render(request, 'frontend/resultado_encuesta.html', context)
 
@@ -287,7 +313,7 @@ def login_view(request):
             return redirect('index')
         else:
             # Mostrar mensaje de error de login inválido
-            return render(request, 'login.html', {'error': 'Credenciales inválidas'})
+            return render(request, 'frontend/login.html', {'error': 'Credenciales inválidas'})
     else:
         return render(request, 'frontend/login.html')
 

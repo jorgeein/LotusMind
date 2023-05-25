@@ -723,3 +723,68 @@ button.start {
     font-family: 'Neue Haas Grotesk Text', sans-serif;
 
 }
+
+.botones4 {
+    display: flex;
+    justify-content: center;
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 22px;
+    color: white;
+}
+
+.btn2 {
+    background-color: black;
+    border: 0;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 22px;
+    color: white;
+}
+
+.bloquedemodulo {
+    display: table-cell;
+    border-radius: 50px;
+    padding: 20px;
+    width: 1050px;
+    height: 50px;
+    vertical-align: middle;
+    text-align: left;
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 22px;
+    color: white;
+    position: relative;
+
+}
+
+.meditacionimg {
+    margin-left: 380px;
+    margin-top: -25px;
+    position: absolute;
+    z-index: 1;
+    object-fit: contain;
+    background-size: contain;
+}
+
+@media screen and (max-width : 1070px) {
+    .meditacionimg {
+        left: auto;
+        right: 3%
+    }
+}
+
+@media screen and (max-width:440px) {
+    .meditacionimg {
+        display: none;
+    }
+
+    .principalimagen {
+        width: 100%;
+    }
+}
+
+.textonombre {
+    font-family: 'Neue Haas Grotesk Text', sans-serif;
+    font-size: 22px;
+    color: black;
+}

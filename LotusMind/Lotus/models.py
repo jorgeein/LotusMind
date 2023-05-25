@@ -14,11 +14,13 @@ class Usuario(AbstractUser, PermissionsMixin):
     uso_personal = models.BooleanField(default=True)
     uso_terceros = models.BooleanField(default=False)
     escala_usuario = models.PositiveIntegerField(blank=True, null=True)
-    historial_modulos = models.ManyToManyField('Modulo', blank=True)
+    historial_recursos = models.ManyToManyField('Recurso', blank=True)
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-    def tiene_modulo(self, modulo):
-        return self.historial_modulos.filter(pk=modulo.pk).exists()
+
+    def tiene_modulo(self, recurso):
+        return self.historial_recursos.filter(pk=recurso.pk).exists()
 
 
 class Modulo(models.Model):

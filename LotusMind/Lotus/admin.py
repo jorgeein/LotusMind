@@ -37,7 +37,7 @@ class ModuloAdmin(admin.ModelAdmin):
 class UsuarioAdmin(UserAdmin):
     list_display = ('username', 'email', 'first_name',
                     'last_name', 'is_staff', 'is_active')
-    filter_horizontal = ('historial_modulos',)
+    filter_horizontal = ('historial_recursos',)
     list_display = (
         'username', 'email', 'first_name', 'last_name', 'uso_terceros', 'uso_personal', 'escala_usuario',
     )
@@ -51,7 +51,7 @@ class UsuarioAdmin(UserAdmin):
         }),
         ('Permissions', {
             'fields': (
-                'uso_terceros', 'uso_personal', 'escala_usuario', 'historial_modulos'
+                'uso_terceros', 'uso_personal', 'escala_usuario', 'historial_recursos'
             )
         })
     )
