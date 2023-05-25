@@ -266,29 +266,33 @@ def resultado_encuesta(request):
     porcentaje_circulo = 0
     porcentaje_numero = 0
     porcentaje_barra = 0
-    if total_respuestas <= 44:
-        porcentaje_barra = (((((total_respuestas-20)/25)*100)*30)/100)
-        margenizq = 0
-        porcentaje_circulo = porcentaje_barra + 0
-        porcentaje_numero = porcentaje_circulo - 4
+    total_respuestas = 20
 
-    if total_respuestas <= 59 and total_respuestas >= 45:
-        porcentaje_barra = (((((total_respuestas-44)/15)*100)*30)/100)
-        margenizq = 110
-        porcentaje_circulo = porcentaje_barra + 30
-        porcentaje_numero = porcentaje_circulo - 4
+    if total_respuestas is not None:
+        if total_respuestas <= 44:
+            porcentaje_barra = (((((total_respuestas-20)/25)*100)*30)/100)
+            margenizq = 0
+            porcentaje_circulo = porcentaje_barra + 0
+            porcentaje_numero = porcentaje_circulo - 4
 
-    if total_respuestas <= 74 and total_respuestas >= 60:
-        porcentaje_barra = (((((total_respuestas-59)/15)*100)*30)/100)
-        margenizq = 220
-        porcentaje_circulo = porcentaje_barra + 70
-        porcentaje_numero = porcentaje_circulo - 4
+        elif total_respuestas <= 59 and total_respuestas >= 45:
+            porcentaje_barra = (((((total_respuestas-44)/15)*100)*30)/100)
+            margenizq = 110
+            porcentaje_circulo = porcentaje_barra + 30
+            porcentaje_numero = porcentaje_circulo - 4
 
-    if total_respuestas >= 75:
-        porcentaje_barra = (((((total_respuestas-74)/15)*100)*30)/100)
-        margenizq = 330
-        porcentaje_circulo = porcentaje_barra + 100
-        porcentaje_numero = porcentaje_circulo - 4
+        elif total_respuestas <= 74 and total_respuestas >= 60:
+            porcentaje_barra = (((((total_respuestas-59)/15)*100)*30)/100)
+            margenizq = 220
+            porcentaje_circulo = porcentaje_barra + 70
+            porcentaje_numero = porcentaje_circulo - 4
+
+        elif total_respuestas >= 75:
+            porcentaje_barra = (((((total_respuestas-74)/15)*100)*30)/100)
+            margenizq = 330
+            porcentaje_circulo = porcentaje_barra + 100
+            porcentaje_numero = porcentaje_circulo - 4
+
     context = {
         'respuestas_encuesta': respuestas_encuesta,
         'ultimas_encuestas': ultimas_encuestas,
@@ -297,7 +301,6 @@ def resultado_encuesta(request):
         'porcentaje_barra': porcentaje_barra,
         'porcentaje_circulo': porcentaje_circulo,
         'porcentaje_numero': porcentaje_numero
-
     }
     return render(request, 'frontend/resultado_encuesta.html', context)
 
